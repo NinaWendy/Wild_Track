@@ -69,7 +69,6 @@
                 <div class="card-body bd">
                     <h4 class="card-title">Rhino</h4>
                     <p class="card-text">Heavy weight</p>
-                    <P><span style="font-weight: bold;">Endangered:</span> No</P>
                     <P><span style="font-weight: bold;">Health:</span></P>
                     <p><span style="font-weight: bold;">Age:</span></p>
                     <a href="/animals/{{id}}" class="btn btn-primary">more...</a>
@@ -105,15 +104,14 @@
                 </div>
             </div>
         </div>
-        {{#each animals}}
+        {{#each endangeredAnimals}}
             <div class="container-fluid">
                 <div class="card" style="width:200px">
                     <img class="card-img-top" src="/images/wolf.avif" alt="Card image" style="width:100%">
                     <div class="card-body bd">
                         <h4 class="card-title">{{name}}</h4>
-                        <p class="card-text">Most ferocious </p>
-                        <P><span style="font-weight: bold;">Endangered:</span>{{isEndangered}}</P>
-                        <P><span style="font-weight: bold;">Health:</span>{{healthy}}</P>
+                        <P><span style="font-weight: bold;">Endangered:</span>{{endangered}}</P>
+                        <P><span style="font-weight: bold;">Health:</span>{{health}}</P>
                         <p><span style="font-weight: bold;">Age:</span>{{age}}</p>
                         <a href="/animals/{{id}}" class="btn btn-primary">more...</a>
 
@@ -124,6 +122,7 @@
 
 
     </div>
+    <button class="btn btn-danger" style="margin:2%"><a href="/animals/delete">DELETE ALL</a></button>
     <div class="social">
         <img class="img-fluid im" src="/images/logo-facebook (copy).svg" alt="">
         <img class="img-fluid" src="/images/logo-twitter.svg" alt="">

@@ -129,22 +129,23 @@
     <form id="regForm" action="" method="post" style="width: 30%;background-color: transparent;">
         <h1>Sighting</h1>
         <div class="tab">Name:
-            <p><input placeholder="Ranger name..." oninput="this.className = ''" name="rangerName"></p>
+            <p><input placeholder="Ranger name..." oninput="this.className = ''" name="rangerName" required></p>
             Location:
-            <p><input placeholder="Location..." oninput="this.className = ''" name="location"></p>
+            <p><input placeholder="Location..." oninput="this.className = ''" name="location" required></p>
         </div>
 
         <div class="tab">Animal species:
             <p>
-                <select class="form-control" id="animal" name="animal">
+                <select class="form-control" id="animal" name="animal" required>
                     <option>Tiger</option>
                     <option>Lion</option>
                     <option>Elephant</option>
                     <option>Rhino</option>
+                    <option>Other</option>
                 </select>
              </p>
             Animal Id:
-            <p><input placeholder="Animal ID..." oninput="this.className = ''" name="animalId" type="number"></p>
+            <p><input placeholder="Animal ID..." oninput="this.className = ''" name="animalId" type="number" required></p>
         </div>
         <div style="overflow:auto;">
             <div style="float:right;">
