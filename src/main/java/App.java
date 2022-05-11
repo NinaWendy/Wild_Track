@@ -31,8 +31,12 @@ public class App {
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
 
-        String connectionString = "jdbc:postgresql://localhost:5432/wildlife_tracker";//connect to wildlife_tracker, not wildlife_tracker_test!
-        Sql2o sql2o = new Sql2o(connectionString, "nina", "kabila");
+        String connectionString = "jdbc:postgresql://ec2-54-164-40-66.compute-1.amazonaws.com:5432/d638ql20pe11fe"; //!
+        Sql2o sql2o = new Sql2o(connectionString, "zrqyhfxzbuvagb", "e85ee8d92cc05625dea94fdad54a1481ac8030a088286ffc4629e7af6ff26108"); //!
+
+//        String connectionString = "jdbc:postgresql://localhost:5432/wildlife_tracker";//connect to wildlife_tracker, not wildlife_tracker_test!
+//        Sql2o sql2o = new Sql2o(connectionString, "nina", "kabila");
+
         Sql2oSightingDao sightingDao = new Sql2oSightingDao(sql2o);
         Sql2oEndangeredAnimalDao endangeredAnimalDao = new Sql2oEndangeredAnimalDao(sql2o);
         Sql2oAnimalDao animalDao = new Sql2oAnimalDao(sql2o);
