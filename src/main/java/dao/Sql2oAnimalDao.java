@@ -1,6 +1,7 @@
 package dao;
 
 import models.Animal;
+import models.Sighting;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -17,7 +18,7 @@ public class Sql2oAnimalDao implements AnimalDao{
 
     @Override
     public void addAnimal(Animal animal) {
-        String sql = "INSERT INTO animals (name) VALUES (:name)";
+        String sql = "INSERT INTO animals (name, health,age) VALUES (:name, :health, :age)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(animal)
@@ -71,24 +72,24 @@ public class Sql2oAnimalDao implements AnimalDao{
         }
     }
 
-//    @Override
-//    public List<Sighting> getAllSightingsByAnimal(int animalId) {
-//        try(Connection con = sql2o.open()){
-//            return con.createQuery("SELECT * FROM sightings WHERE animalId = :animalId")
-//                    .addParameter("animalId", animalId)
-//                    .executeAndFetch(Sighting.class);
-//        }
-//    }
-//    public void add(Sighting sighting) {
-//        String sql = "INSERT INTO sightings (animalId,location,rangerName) VALUES (:animalId,:location ,:rangerName)";
-//        try(Connection con = sql2o.open()){
-//            int id = (int) con.createQuery(sql, true)
-//                    .bind(sighting)
-//                    .executeUpdate() //run it all
-//                    .getKey(); //int id is now the row number (row “key”) of db
-//            sighting.setId(id); //update object to set id now from database
-//        } catch (Sql2oException ex) {
-//            System.out.println("there was a problem adding the sighting");
-//        }
-//    }
+    @Override
+    public List<Sighting> getAllSightingsByAnimal(int animalId) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM sightings WHERE animalId = :animalId")
+                    .addParameter("animalId", animalId)
+                    .executeAndFetch(Sighting.class);
+        }
+    }
+    public void add(Sighting sighting) {
+        String sql = "INSERT INTO sightings (animalId,location,rangerName) VALUES (:animalId,:location ,:rangerName)";
+        try(Connection con = sql2o.open()){
+            int id = (int) con.createQuery(sql, true)
+                    .bind(sighting)
+                    .executeUpdate() //run it all
+                    .getKey(); //int id is now the row number (row “key”) of db
+            sighting.setId(id); //update object to set id now from database
+        } catch (Sql2oException ex) {
+            System.out.println("there was a problem adding the sighting");
+        }
+    }
 }
